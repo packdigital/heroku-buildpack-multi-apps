@@ -24,16 +24,14 @@ fi
 
 echo "Copied ${APP_DIR} Procfile successfully" | indent
 
-ls ${APP_DIR}
+ls ${BUILD_DIR}/${APP_DIR}
 
-echo -f "${APP_DIR}/app.json"
-
-if [[ -f "${APP_DIR}/app.json" ]]; then
-    cp "${APP_DIR}/app.json" "${BUILD_DIR}/app.json"
+if [[ -f "${BUILD_DIR}/${APP_DIR}/app.json" ]]; then
+    cp "${BUILD_DIR}/${APP_DIR}/app.json" "${BUILD_DIR}/app.json"
     echo "Copied ${APP_DIR}/app.json as app.json successfully" | indent
 fi
 
-if [[ -f "${APP_DIR}/package.main.json" ]]; then
-    cp "${APP_DIR}/package.main.json" "${BUILD_DIR}/package.json"
+if [[ -f "${BUILD_DIR}/${APP_DIR}/package.main.json" ]]; then
+    cp "${BUILD_DIR}/${APP_DIR}/package.main.json" "${BUILD_DIR}/package.json"
     echo "Copied ${APP_DIR}/package.main.json as package.json successfully" | indent
 fi
