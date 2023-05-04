@@ -33,3 +33,13 @@ if [[ -f "${BUILD_DIR}/${APP_DIR}/package.main.json" ]]; then
     cp "${BUILD_DIR}/${APP_DIR}/package.main.json" "${BUILD_DIR}/package.json"
     echo "Copied ${APP_DIR}/package.main.json as package.json successfully" | indent
 fi
+
+if [[ -f "${BUILD_DIR}/${APP_DIR}/release.sh" ]]; then
+    cp "${BUILD_DIR}/${APP_DIR}/release.sh" "${BUILD_DIR}/release.sh"
+    echo "Copied ${APP_DIR}/release.sh as release.sh successfully" | indent
+fi
+
+if [[ -f "${BUILD_DIR}/${APP_DIR}/cleanup.sh" ]]; then
+    cp "${BUILD_DIR}/${APP_DIR}/cleanup.sh" "${BUILD_DIR}/cleanup.sh"
+    echo "Copied ${APP_DIR}/cleanup.sh as cleanup.sh successfully" | indent
+fi
