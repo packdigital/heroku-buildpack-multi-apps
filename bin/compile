@@ -62,20 +62,19 @@ installAwsCli() {
 }
 
 installHelm() {
-    if [ ! -s .helm_version ]; then
+    if [ ! -s "${BUILD_DIR}/.helm_version" ]; then
         echo ".helm_version empty. Skipping."
-        exit 0
+    else; then
+        mkdir custom-bin
+        mkdir -p .profile.d
+
+        HELM_VERSION=`cat .helm_version`
+        echo "Downloading helm from https://storage.googleapis.com/kubernetes-helm/helm-$HELM_VERSION-linux-amd64.tar.gz"
+        wget https://get.helm.sh/helm-$HELM_VERSION-linux-amd64.tar.gz -O- | tar -xz --strip 1 linux-amd64/helm
+        mv helm custom-bin
+
+        echo "export PATH=$PATH:$HOME/custom-bin" >> .profile.d/custom_binaries.sh
     fi
-
-    mkdir custom-bin
-    mkdir -p .profile.d
-
-    HELM_VERSION=`cat .helm_version`
-    echo "Downloading helm from https://storage.googleapis.com/kubernetes-helm/helm-$HELM_VERSION-linux-amd64.tar.gz"
-    wget https://get.helm.sh/helm-$HELM_VERSION-linux-amd64.tar.gz -O- | tar -xz --strip 1 linux-amd64/helm
-    mv helm custom-bin
-
-    echo "export PATH=$PATH:$HOME/custom-bin" >> .profile.d/custom_binaries.sh
 }
 
 BUILD_DIR=$1
