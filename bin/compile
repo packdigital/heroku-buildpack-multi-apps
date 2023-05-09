@@ -64,7 +64,7 @@ installAwsCli() {
 installHelm() {
     if [ ! -s "${BUILD_DIR}/.helm_version" ]; then
         echo ".helm_version empty. Skipping."
-    else; then
+    else
         mkdir custom-bin
         mkdir -p .profile.d
 
