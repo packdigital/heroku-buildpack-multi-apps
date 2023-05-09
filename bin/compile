@@ -68,7 +68,7 @@ installHelm() {
         mkdir custom-bin
         mkdir -p .profile.d
 
-        HELM_VERSION=`cat .helm_version`
+        HELM_VERSION=`cat ${BUILD_DIR}/.helm_version`
         echo "Downloading helm from https://storage.googleapis.com/kubernetes-helm/helm-$HELM_VERSION-linux-amd64.tar.gz"
         wget https://get.helm.sh/helm-$HELM_VERSION-linux-amd64.tar.gz -O- | tar -xz --strip 1 linux-amd64/helm
         mv helm custom-bin
@@ -118,10 +118,10 @@ if [[ -f "${BUILD_DIR}/${APP_DIR}/cleanup.sh" ]]; then
     echo "Copied ${APP_DIR}/cleanup.sh as cleanup.sh successfully" | indent
 fi
 
-if [[ $INSTALL_HELM -eq "true" ]]; then
+if [[ $INSTALL_HELM == "true" ]]; then
     installHelm
 fi
 
-if [[ $APP_DIR -eq "server" ]]; then
+if [[ $APP_DIR == "server" ]]; then
     installAwsCli
 fi
