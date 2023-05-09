@@ -120,6 +120,6 @@ fi
 
 
 if [[ $APP_DIR -eq "server" ]]; then
-    installHelm()
-    installAwsCli()
+    installHelm
+    installAwsCli
 fi
