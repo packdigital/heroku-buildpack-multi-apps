@@ -82,6 +82,7 @@ CACHE_DIR=$2
 ENV_DIR=$3
 
 APP_DIR=$(cat "${ENV_DIR}/APP_DIR")
+INSTALL_HELM=$(cat "${ENV_DIR}/INSTALL_HELM")
 
 if [[ -z "${APP_DIR}" ]]; then
     echo "APP_DIR was not set. Aborting" | indent
@@ -117,8 +118,10 @@ if [[ -f "${BUILD_DIR}/${APP_DIR}/cleanup.sh" ]]; then
     echo "Copied ${APP_DIR}/cleanup.sh as cleanup.sh successfully" | indent
 fi
 
+if [[ $INSTALL_HELM -eq "true" ]]; then
+    installHelm
+fi
 
 if [[ $APP_DIR -eq "server" ]]; then
-    installHelm
     installAwsCli
 fi
