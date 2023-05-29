@@ -20,7 +20,7 @@ installAwsCli() {
     INSTALL_DIR="$PATH_DIR/.awscli"
     TMP_DIR=$(mktemp -d)
 
-    cd $BUILD_DIR
+    #cd $BUILD_DIR
 
     echo "-----> Downloading AWS CLI"
     curl --silent --show-error --fail -o "${TMP_DIR}/awscliv2.zip" "${AWS_CLI_URL}" |& indent
@@ -54,7 +54,7 @@ installAwsCli() {
 
     echo "-----> Exporting PATH"
 
-    echo "export PATH=$PATH:$HOME/custom-bin" >> $BUILD_DIR/.profile.d/aws_binaries.sh
+    echo "export PATH=$PATH:$HOME/custom-bin" >> .profile.d/aws_binaries.sh
 
     rm -rf "${TMP_DIR}"
 
