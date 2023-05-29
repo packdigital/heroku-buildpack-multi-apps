@@ -19,18 +19,14 @@ installAwsCli() {
     PATH_DIR="/app"
     INSTALL_DIR="$PATH_DIR/.awscli"
     TMP_DIR=$(mktemp -d)
-    
-    pwd
-    
+
     cd $BUILD_DIR
-    
-    pwd
 
     echo "-----> Downloading AWS CLI"
     curl --silent --show-error --fail -o "${TMP_DIR}/awscliv2.zip" "${AWS_CLI_URL}" |& indent
     unzip -qq -d "${TMP_DIR}" "${TMP_DIR}/awscliv2.zip" |& indent
 
-    mkdir -p .awscli
+    mkdir -p "${BUILD_DIR}/.awscli"
 
     # The AWS installer creates symlinks that use absolute paths, as such the install
     # location must match the location from which the CLI is eventually run.
@@ -127,5 +123,5 @@ if [[ $INSTALL_HELM == "true" ]]; then
 fi
 
 if [[ $APP_DIR == "server" ]]; then
-    installAwsCli
+    installAwsCli $0 $1 $2
 fi
