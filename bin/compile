@@ -50,7 +50,7 @@ installAwsCli() {
 
     $PATH_DIR/custom-bin/aws --version
 
-    ln -s $PATH_DIR/.awscli/v2/current/bin/aws $BUILD_DIR/custom-bin/aws
+    #ln -s $PATH_DIR/.awscli/v2/current/bin/aws $BUILD_DIR/custom-bin/aws
 
     echo "-----> Exporting PATH"
 
@@ -122,6 +122,6 @@ if [[ $INSTALL_HELM == "true" ]]; then
     installHelm
 fi
 
-# if [[ $APP_DIR == "server" ]]; then
-#     installAwsCli $0 $1 $2
-# fi
+if [[ $APP_DIR == "server" ]]; then
+    installAwsCli $0 $1 $2
+ fi
