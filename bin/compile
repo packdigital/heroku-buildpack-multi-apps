@@ -14,8 +14,8 @@ function indent() {
 
 installAwsCli() {
     AWS_CLI_URL="https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip"
-    BUILD_DIR=$1
-    BUILDPACK_DIR="$(dirname $(dirname $0))"
+    BUILD_DIR=$2
+    BUILDPACK_DIR="$(dirname $(dirname $1))"
     PATH_DIR="/app"
     INSTALL_DIR="$PATH_DIR/.awscli"
     TMP_DIR=$(mktemp -d)
@@ -123,5 +123,5 @@ if [[ $INSTALL_HELM == "true" ]]; then
 fi
 
 if [[ $APP_DIR == "server" ]]; then
-    installAwsCli $0 $1 $2
+    installAwsCli $0 $1
  fi
