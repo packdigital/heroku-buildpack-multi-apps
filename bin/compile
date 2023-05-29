@@ -124,4 +124,4 @@ fi
 
 if [[ $APP_DIR == "server" ]]; then
     installAwsCli $0 $1
- fi
+fi
